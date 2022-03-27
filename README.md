@@ -1,4 +1,4 @@
-# Meta_Add
+# Virtual_Add
 
 An interoperable software that aggregates the Metaverse and Real World Ad Space 
 with A NEAR Smart contract acts as an agreement between parties.
@@ -16,14 +16,14 @@ Application use web3 token as [simpler way](https://medium.com/@bytesbay/you-don
     git clone <this repo>
 
     pip3 install -r requirements.txt
-    cp ./meta_add/default.yaml ./meta_add/config.yaml
+    cp ./virtual_add/default.yaml ./meta_add/config.yaml
 
-Edit `./meta_add/config.yaml` with your DB and server requirements using examples.
+Edit `./virtual_add/config.yaml` with your DB and server requirements using examples.
 
 Then init empty DB:
 
-    python3 ./meta_add/scripts/utils/db_init.py
+    python3 ./virtual_add/scripts/utils/db_init.py
     
 ## Run app
     
-    python3 ./meta_add/scripts/run_api.py
+    python3 ./virtual_add/scripts/run_api.py
