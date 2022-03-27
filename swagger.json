@@ -1,0 +1,957 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "MetaAds front",
+    "description": "Meta ads front-end API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://metaads.team/tornado",
+      "description": "MetaAds API"
+    }
+  ],
+  "paths": {
+    "/adspots": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get all adspots",
+        "description": "Get all AdSpot joined with AdSpotType, AdsPotStats",
+        "responses": {
+          "200": {
+            "description": "get AdSpot",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/adspot/id/{id}": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get adspot",
+        "description": "Get by {id} AdSpot joined with AdSpotType",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Numeric ID of the AdSpot to get",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get AdSpot by{id}",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdSpot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/adspot_stats/id/{id}": {
+      "get": {
+        "tags": [
+          "not_used"
+        ],
+        "summary": "get AdSpotStats",
+        "description": "Get AdSpotStats by {id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Numeric ID of the AdSpotStats to get",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of AdSpotStats",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdSpotTypes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/adspot_types": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get all AdSpotType's",
+        "description": "Get all AdSpotType's",
+        "responses": {
+          "200": {
+            "description": "list of available AdSpotType's",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/timeslots": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get all TimeSlot's",
+        "description": "Get all TimeSlot's",
+        "responses": {
+          "200": {
+            "description": "list of available TimeSlot's",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_3"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/timeslots_by_adspot/id/{id}": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get TimeSlot",
+        "description": "Get TimeSlot by {id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Numeric ID of the TimeSlot to get",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of TimeSlot",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_3"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/timeslots/date/{date}": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get TimeSlot",
+        "description": "Get TimeSlots by {date}",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date strinf like '2022-02-04' for the TimeSlot's to get",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of TimeSlot",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_3"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/timeslots_by_adspot/id/{id}/date/{date}": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get TimeSlot",
+        "description": "Get TimeSlot by {id} and {date}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Numeric ID of the TimeSlot to get",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date to filter",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of TimeSlot",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_3"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/playbacks": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get all Playback's",
+        "description": "Get all Playback's joined by Creative, Advertiser, TimeSlot, AdSpot\n",
+        "responses": {
+          "200": {
+            "description": "list of Playback's'",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/playback/id/{id}": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get Playback",
+        "description": "get Playback by {id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "get Playback by {id}",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Playback added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Playback"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "edit Playback",
+        "description": "edit Playback by {id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "get Playback by {id}",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "edit Creative",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/id_id_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Playback deleted"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "delete Playback",
+        "description": "delete Playback by {id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "get Playback by {id}",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Playback deleted"
+          }
+        }
+      }
+    },
+    "/playback": {
+      "post": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "add new Playback with Timeslot data in one request",
+        "description": "Add Playback with Timeslot",
+        "parameters": [
+          {
+            "name": "from_time",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to_time",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "adspot_id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "creative_id",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "preparing",
+                "signed",
+                "minting",
+                "minted",
+                "performing",
+                "success"
+              ]
+            }
+          },
+          {
+            "name": "smart_contract",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "play_price",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          }
+        }
+      }
+    },
+    "/creatives": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get all Creatives",
+        "description": "Get all Creatives",
+        "parameters": [
+          {
+            "name": "mint",
+            "in": "query",
+            "description": "get Creative by {id}",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of available Creatives",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_5"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creative/id/{id}": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "get Creative",
+        "description": "get Creative by {id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "get Creative by {id}",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Creative added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Creative"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "update Creative blockchain_ref value",
+        "description": "update Creative blockchain_ref value by {id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "get Creative by {id}",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create new Creative",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/id_id_body_1"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Creative deleted"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "delete Creative",
+        "description": "delete Creative by {id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "get Creative by {id}",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Creative deleted"
+          }
+        }
+      }
+    },
+    "/creative": {
+      "post": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "add new Creative",
+        "description": "Add Creative",
+        "requestBody": {
+          "description": "Create new Creative",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/creative_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "list of available Creatives",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_5"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AdSpot": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "TV Adspot"
+          },
+          "description": {
+            "type": "string",
+            "example": ""
+          },
+          "publisher_name": {
+            "type": "string",
+            "example": "string"
+          },
+          "publisher_wallet_ref": {
+            "type": "string",
+            "example": "string"
+          },
+          "spot_type": {
+            "type": "integer",
+            "example": 1
+          },
+          "price": {
+            "type": "integer",
+            "example": 1
+          },
+          "preview_url": {
+            "type": "string"
+          },
+          "preview_thumb_url": {
+            "type": "string"
+          },
+          "jump_url": {
+            "type": "string"
+          },
+          "spot_metadata": {
+            "type": "string"
+          },
+          "likes": {
+            "type": "integer",
+            "example": 1
+          },
+          "views_amount": {
+            "type": "integer",
+            "example": 1
+          },
+          "average_time": {
+            "type": "integer",
+            "example": 1
+          },
+          "max_traffic": {
+            "type": "integer",
+            "example": 1
+          }
+        }
+      },
+      "Creative": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "nft_ref": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "blockchain_ref": {
+            "type": "string"
+          },
+          "moderated": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Playback": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "adspot_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "adspot_name": {
+            "type": "string"
+          },
+          "adspot_likes": {
+            "type": "integer"
+          },
+          "preview_thumb_url": {
+            "type": "string"
+          },
+          "jump_url": {
+            "type": "string"
+          },
+          "from_time": {
+            "type": "string"
+          },
+          "to_time": {
+            "type": "string"
+          },
+          "advert_id": {
+            "type": "integer"
+          },
+          "creative_name": {
+            "type": "string"
+          },
+          "creative_description": {
+            "type": "string"
+          },
+          "creative_url": {
+            "type": "string"
+          },
+          "creative_path": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "smart_contract": {
+            "type": "string"
+          },
+          "spot_price": {
+            "type": "integer"
+          },
+          "locked": {
+            "type": "boolean"
+          },
+          "adspot_type_name": {
+            "type": "string"
+          },
+          "publish_url": {
+            "type": "string"
+          },
+          "processed_at": {
+            "type": "string"
+          }
+        }
+      },
+      "TimeSlot": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "from_time": {
+            "type": "string",
+            "example": "2022-02-15T08:34:15"
+          },
+          "to_time": {
+            "type": "string",
+            "example": "2022-02-16T08:34:15"
+          },
+          "locked": {
+            "type": "boolean"
+          },
+          "price": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      },
+      "AdSpotTypes": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "publish_url": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "example": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibG9naW4iOiJhZG1pbiIsIm5hbWUiOiJBZG1pbiIsIndhbGxldF9yZWYiOiJodHRwczovL2FkbWluLnJlZi8iLCJzZXNzaW9uX2V4cCI6IjIwMjItMDItMTFUMTI6MTM6MTAuNzIwNzkwIn0.9O_7nvDOR2dGaG3ShOR3p_Se\n"
+          }
+        }
+      },
+      "inline_response_200_1": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdSpot"
+            }
+          }
+        }
+      },
+      "inline_response_200_2": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdSpotTypes"
+            }
+          }
+        }
+      },
+      "inline_response_200_3": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TimeSlot"
+            }
+          }
+        }
+      },
+      "inline_response_200_4": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Playback"
+            }
+          }
+        }
+      },
+      "inline_response_200_5": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Creative"
+            }
+          }
+        }
+      },
+      "id_id_body": {
+        "required": [
+          "smart_contract",
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "smart_contract": {
+            "type": "string"
+          }
+        }
+      },
+      "id_id_body_1": {
+        "required": [
+          "blockchain_ref"
+        ],
+        "properties": {
+          "blockchain_ref": {
+            "type": "string"
+          }
+        }
+      },
+      "creative_body": {
+        "required": [
+          "file",
+          "filename",
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
